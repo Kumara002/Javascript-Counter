@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+</head>
+
+<body>
+    <input type="text" id="timeCount" onkeydown="stop(),Press(event)" >
+    <p id="current-time"></p>
+</body>
+<script>
+    function Press(event) {
+        const interval = setInterval(counter, 1000);
+        const element = document.getElementById("current-time")
+        let reg = /[A-Z]/g
+        let count = parseInt(document.getElementById("timeCount").value)
+        console.log(count)
+
+        if(event.keyCode!==13){
+            console.log("hello bro")
+            debugger
+            clearInterval(interval)
+        }
+
+        //    const interval = setInterval(counter, 1000);  
+        //    clearInterval(interval) 
+        // function stop() {
+        //     // debugger
+        //     clearInterval(interval)
+        // }
+        function counter() {
+            
+            // if(event.key!=="Enter"){
+            //     location.reload()
+            //     // element.innerHTML="hello bro"
+            //     // return clearInterval(interval)
+            // }
+             if (event.keyCode == 13) {
+                
+
+                if (count === 0 || count < 0) {
+                    count = 0
+                    element.innerHTML = count
+                    clearInterval(interval)
+                }
+                else if (reg.test(count)) {
+                    console.log("hello")
+                    alert("Invalid Input")
+                    count = 0
+                    element.innerHTML = count
+                    clearInterval(interval)
+                }
+                else {
+                    if (event.keyCode !== 13) {
+                        clearInterval(interval)
+                    }
+                    else {
+                        element.innerHTML = count
+                        count = count - 1
+                    }
+                }
+            }
+          
+        }
+    }
+</script>
+
+</html>
